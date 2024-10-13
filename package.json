@@ -1,0 +1,21 @@
+{
+  "name": "@idangib/childrenbudgetapi",
+  "version": "1.0.0",
+  "description": "api for children budget app",
+  "main": "dist/main.js",
+  "repository": {
+    "url": "https://github.com/IdanGib/ChildrenBudgetAPI.git"
+  },
+  "scripts": {
+    "test": "exit 0",
+    "build": "npx tsc",
+    "prestart": "npm run build",
+    "start": "node ./dist/main.js",
+    "postinstall": "npm run build"
+  },
+  "author": "idangibly",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.6.3"
+  }
+}
