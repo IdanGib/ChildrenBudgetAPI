@@ -16,7 +16,7 @@
   "author": "idangibly",
   "license": "ISC",
   "dependencies": {
-    "@idangib/childrenbudget": "^1.0.3",
+    "@idangib/childrenbudget": "^1.0.4",
     "typescript": "^5.6.3"
   }
 }

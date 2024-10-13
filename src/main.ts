@@ -1,1 +1,2 @@
-console.log('main running');
+import { hello } from '@idangib/childrenbudget';
+hello();
