@@ -8,10 +8,6 @@ const main = async () => {
     };
     
     const app = await childrenBudgetApplication(config);
-    const parent = await app?.createParent({ name: 'parent created by API' });
-    
-    console.log(parent);
-
     await app?.shutdown();
 }
 
