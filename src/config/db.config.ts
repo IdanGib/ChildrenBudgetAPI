@@ -10,10 +10,12 @@ const {
     DB_POSTGRESQL_DATABASE = '',
 } = process.env;
 
-export const postgresql: PostgreSqlConfig = {
+const postgresql: PostgreSqlConfig = {
     username: DB_POSTGRESQL_USERNAME,
     port: Number(DB_POSTGRESQL_PORT),
     password: DB_POSTGRESQL_PASSWORD,
     database: DB_POSTGRESQL_DATABASE,
     host: DB_POSTGRESQL_HOST,
 };
+
+export const dbConfig = { postgresql };

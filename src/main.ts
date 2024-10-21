@@ -1,4 +1,4 @@
-import { Api } from './api';
+import { Api } from '@/api/api';
 
 const main = async () => {
     const api = new Api();
