@@ -1,13 +1,17 @@
-import express, { Request, Response } from 'express';
-import { apiConfig } from '@/config/api.config';
-import { router } from '@/api/api.actions';
-
-const app = express();
+import express, { Express } from 'express';
+import { middleware } from './api.middleware';
+import { actions } from './api.actions';
+import { ApiConfig } from '@/interface/api.interface';
 
 export class Api {
-    run() {
-        const { port } = apiConfig;
-        app.use('/v1', router);
-        app.listen(port, () => console.log('Api running'));
+    private readonly app: Express;
+    constructor(protected readonly config: ApiConfig) {
+        this.app = express();
+    }
+    async run() {
+        const { app, config: { port } } = this;   
+        await middleware(app);
+        await actions(app);
+        app.listen(port);
     }
 }
