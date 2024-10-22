@@ -32,22 +32,16 @@ export const TransactionSchema = z.object({
     budgetId: z.string(),
 });
 
-const ReadCommonArgsSchema = z.object({
+const ReadWhereSchema = z.object({
+    id: z.string(),
+    childId: z.string(),
+    budgetId: z.string(),
+}).partial().refine(({ id, childId, budgetId }) => {
+    return id || childId || budgetId;
+});
+
+export const ReadQuertArgsSchema = z.object({
     offset: z.coerce.number().default(offset),
     limit: z.coerce.number().default(limit),
-    id: z.string().optional(),
-});
-
-export const ReadParentsArgsSchema = ReadCommonArgsSchema.extend({});
-
-export const ReadChildArgsSchema = ReadCommonArgsSchema.extend({
-    parentId: z.string().optional()
-});
-
-export const ReadBudgetArgsSchema = ReadCommonArgsSchema.extend({
-    childId: z.string().optional()
-});
-
-export const ReadTransactionArgsSchema = ReadCommonArgsSchema.extend({
-    budgetId: z.string().optional()
+    where: ReadWhereSchema 
 });
