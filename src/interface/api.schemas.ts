@@ -1,5 +1,6 @@
+import { defaults } from "@/config/api.config";
 import { z } from "zod";
-
+const { limit, offset } = defaults; 
 export const ParentSchema = z.object({
     name: z.string().optional(),
     email: z.string().optional(),
@@ -32,7 +33,7 @@ export const TransactionSchema = z.object({
 });
 
 export const ReadParentsArgsSchema = z.object({
-    offset: z.number(),
-    limit: z.number(),
+    offset: z.coerce.number().default(offset),
+    limit: z.coerce.number().default(limit),
     id: z.string(),
 });

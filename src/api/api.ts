@@ -1,8 +1,8 @@
 import express, { Express } from 'express';
-import { middleware } from './api.middleware';
-import { actions } from './api.actions';
+import { middleware } from '@/api/api.middleware';
+import { actions } from '@/api/actions/api.actions';
 import { ApiDeps } from '@/interface/api.interface';
-import { common } from './api.common';
+import { common } from '@/api/api.common';
 import { ChildrenBudget } from '@idangib/childrenbudget/dist/src/interface/app.interface';
 
 export class Api {
