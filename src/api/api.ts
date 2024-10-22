@@ -4,6 +4,7 @@ import { actions } from '@/api/actions/api.actions';
 import { ApiDeps } from '@/interface/api.interface';
 import { common } from '@/api/api.common';
 import { ChildrenBudget } from '@idangib/childrenbudget/dist/src/interface/app.interface';
+import { Logger } from '@/lib/logger';
 
 export class Api {
     private readonly app: Express;
@@ -13,11 +14,12 @@ export class Api {
         this.app = express();
         this.childrenBudget = deps.childrenBudget;
     }
+
     async run() {
         const { childrenBudget, app, deps: { config: { port } } } = this;
         await middleware(app);
         await actions({ app, childrenBudget });
         await common(app);
-        app.listen(port);
+        app.listen(port, () => Logger.log(`[${new Date().toISOString()}] API running on port: ${port}`));
     }
 }
