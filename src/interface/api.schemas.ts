@@ -32,8 +32,22 @@ export const TransactionSchema = z.object({
     budgetId: z.string(),
 });
 
-export const ReadParentsArgsSchema = z.object({
+const ReadCommonArgsSchema = z.object({
     offset: z.coerce.number().default(offset),
     limit: z.coerce.number().default(limit),
-    id: z.string(),
+    id: z.string().optional(),
+});
+
+export const ReadParentsArgsSchema = ReadCommonArgsSchema.extend({});
+
+export const ReadChildArgsSchema = ReadCommonArgsSchema.extend({
+    parentId: z.string().optional()
+});
+
+export const ReadBudgetArgsSchema = ReadCommonArgsSchema.extend({
+    childId: z.string().optional()
+});
+
+export const ReadTransactionArgsSchema = ReadCommonArgsSchema.extend({
+    budgetId: z.string().optional()
 });

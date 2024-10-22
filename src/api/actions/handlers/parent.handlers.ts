@@ -3,7 +3,7 @@ import { ChildrenBudget } from '@idangib/childrenbudget/dist/src/interface/app.i
 import { Request, Response } from 'express';
 import { isEmpty } from 'lodash';
 
-export const parentsHandlers = (childrenBudget: ChildrenBudget) => {
+export const parentHandlers = (childrenBudget: ChildrenBudget) => {
     const readParnets = async (req: Request, res: Response) => {
         const { offset, limit } = req.query ?? {};
         const { id } = req.params ?? {};
@@ -30,4 +30,3 @@ export const parentsHandlers = (childrenBudget: ChildrenBudget) => {
         readParnets,
     };
 }
-
