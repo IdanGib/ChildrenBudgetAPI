@@ -8,6 +8,6 @@ export const childRouter = (childrenBudget: ChildrenBudget) => {
     router.get('', readChildren);
     router.post('', createChild);
     router.put('', updateChild);
-    router.delete('', deleteChild);
+    router.delete('/:id', deleteChild);
     return router;
 }
