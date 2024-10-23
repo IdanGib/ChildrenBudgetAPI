@@ -3,8 +3,11 @@ import { Router } from 'express';
 import { parentHandlers } from '@/api/actions/handlers/parent.handlers';
 
 export const parentRouter = (childrenBudget: ChildrenBudget) => {
-    const { readParnets } = parentHandlers(childrenBudget);
+    const { readParnets, createParnet, updateParent, deleteParent } = parentHandlers(childrenBudget);
     const router = Router();
     router.get('', readParnets);
+    router.post('', createParnet);
+    router.put('', updateParent);
+    router.delete('/:id', deleteParent);
     return router;
 }

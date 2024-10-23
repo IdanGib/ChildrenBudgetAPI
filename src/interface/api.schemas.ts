@@ -1,11 +1,21 @@
 import { defaults } from "@/config/api.config";
 import { z } from "zod";
 const { limit, offset } = defaults; 
+
 export const ParentSchema = z.object({
     name: z.string().optional(),
     email: z.string().optional(),
     imageUrl: z.string().optional()
 });
+
+export const CreateParentSchema = ParentSchema.partial();
+
+export const UpdateParentSchema = z.object({ 
+    data: ParentSchema, 
+    where: z.object( { id: z.string() }) 
+});
+
+export const DeleteParentSchema = z.object({ id: z.string() });
 
 export const BudgetSchema = z.object({
     childId: z.string(),
