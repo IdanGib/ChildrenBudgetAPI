@@ -4,8 +4,11 @@ import { budgetHandlers } from '@/api/actions/handlers/budget.handlers';
 
 
 export const budgetRouter = (childrenBudget: ChildrenBudget) => {
-    const { readBudgets } = budgetHandlers(childrenBudget);
+    const { readBudgets, createBudget, updateBudget, deleteBudget } = budgetHandlers(childrenBudget);
     const router = Router();
     router.get('', readBudgets);
+    router.post('', createBudget);
+    router.put('', updateBudget);
+    router.delete('/:id', deleteBudget);
     return router;
 }
