@@ -5,6 +5,6 @@ import { parentHandlers } from '@/api/actions/handlers/parent.handlers';
 export const parentRouter = (childrenBudget: ChildrenBudget) => {
     const { readParnets } = parentHandlers(childrenBudget);
     const router = Router();
-    router.get('/:id?', readParnets);
+    router.get('', readParnets);
     return router;
 }

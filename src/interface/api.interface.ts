@@ -1,4 +1,4 @@
-import { BudgetSchema, ChildSchema, ParentSchema, ReadQuertArgsSchema, TransactionSchema } from "@/interface/api.schemas";
+import { BudgetSchema, ChildSchema, ParentSchema, ReadQuertArgsSchema, ReadWhereSchema, TransactionSchema } from "@/interface/api.schemas";
 import { ChildrenBudget } from "@idangib/childrenbudget/dist/src/interface/app.interface";
 import { Express } from 'express';
 import { z } from "zod";
@@ -17,6 +17,8 @@ export type Child = z.infer<typeof ChildSchema>;
 export type Transaction = z.infer<typeof TransactionSchema>;
 export type Budget = z.infer<typeof BudgetSchema>;
 
+
+export type ReadWhere = z.infer<typeof ReadWhereSchema>;
 export type ReadQuertArgs = z.infer<typeof ReadQuertArgsSchema>;
 
 

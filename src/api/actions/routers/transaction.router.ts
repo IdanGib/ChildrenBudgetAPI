@@ -5,6 +5,6 @@ import { transactionHandlers } from '@/api/actions/handlers/transaction.handlers
 export const transactionRouter = (childrenBudget: ChildrenBudget) => {
     const { readTransactions } = transactionHandlers(childrenBudget);
     const router = Router();
-    router.get('/:id?', readTransactions);
+    router.get('', readTransactions);
     return router;
 }

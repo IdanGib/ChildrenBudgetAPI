@@ -1,10 +1,8 @@
 import { ChildrenBudget } from '@idangib/childrenbudget/dist/src/interface/app.interface';
-import { Request, Response } from 'express';
-import { isEmpty } from 'lodash';
+import { commonRead } from './common.handlers';
+import { ReadChildrenResult } from '@idangib/childrenbudget/dist/src/interface/database.interface';
 
 export const childHandlers = (childrenBudget: ChildrenBudget) => {
-    const readChildren = async (req: Request, res: Response) => {
-        res.json({ err: null, result: null });
-    }
+    const readChildren = commonRead<ReadChildrenResult>(childrenBudget.readChildren, ['id', 'parentId']);
     return { readChildren };
 }

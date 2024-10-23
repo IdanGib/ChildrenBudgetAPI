@@ -6,6 +6,6 @@ import { budgetHandlers } from '@/api/actions/handlers/budget.handlers';
 export const budgetRouter = (childrenBudget: ChildrenBudget) => {
     const { readBudgets } = budgetHandlers(childrenBudget);
     const router = Router();
-    router.get('/:id?', readBudgets);
+    router.get('', readBudgets);
     return router;
 }

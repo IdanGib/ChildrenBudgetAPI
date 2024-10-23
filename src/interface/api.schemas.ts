@@ -32,12 +32,13 @@ export const TransactionSchema = z.object({
     budgetId: z.string(),
 });
 
-const ReadWhereSchema = z.object({
+export const ReadWhereSchema = z.object({
     id: z.string(),
     childId: z.string(),
     budgetId: z.string(),
-}).partial().refine(({ id, childId, budgetId }) => {
-    return id || childId || budgetId;
+    parentId: z.string(),
+}).partial().refine(({ id, childId, budgetId, parentId }) => {
+    return id || childId || budgetId || parentId;
 });
 
 export const ReadQuertArgsSchema = z.object({
