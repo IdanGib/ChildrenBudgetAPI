@@ -7,7 +7,7 @@ export const infoRouter = (childrenBudget: ChildrenBudget) => {
     const router = Router();
     router.get('/parent/:id', getParentInfo);
     router.get('/child/:id', getChildInfo);
-    router.get('/budget/sum/:id', sumBudgetTransactions);
     router.get('/budget/:id', getBudgetInfo);
+    router.get('/budget/sum/:id', sumBudgetTransactions);
     return router;
 }
