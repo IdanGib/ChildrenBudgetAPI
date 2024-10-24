@@ -10,12 +10,13 @@
     "test": "exit 0",
     "build": "rm -rf dist && npx tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
     "prestart": "npm run build",
-    "start": "node ./dist/main.js"
+    "start": "node ./dist/main.js",
+    "children": "npm i --save-exact @idangib/childrenbudget@latest"
   },
   "author": "idangibly",
   "license": "ISC",
   "dependencies": {
-    "@idangib/childrenbudget": "1.0.16",
+    "@idangib/childrenbudget": "1.0.17",
     "body-parser": "^1.20.3",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.7",

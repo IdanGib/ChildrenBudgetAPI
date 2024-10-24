@@ -4,6 +4,7 @@ import { parentRouter } from '@/api/actions/routers/parent.router';
 import { budgetRouter } from '@/api/actions/routers/budget.router';
 import { childRouter } from '@/api/actions/routers/child.router';
 import { transactionRouter } from '@/api/actions/routers/transaction.router';
+import { infoRouter } from './routers/info.router';
 
 export const actions = async ({ app, childrenBudget }: ActionsDeps) => {
     const router = Router({});
@@ -12,6 +13,7 @@ export const actions = async ({ app, childrenBudget }: ActionsDeps) => {
     router.use('/children', childRouter(childrenBudget));
     router.use('/transacitons', transactionRouter(childrenBudget));
     router.use('/budgets', budgetRouter(childrenBudget));
+    router.use('/info', infoRouter(childrenBudget));
     
     app.use('/v1', router);
 }

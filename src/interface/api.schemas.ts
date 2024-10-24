@@ -85,3 +85,20 @@ export const ReadQuertArgsSchema = z.object({
     limit: z.coerce.number().default(limit),
     where: ReadWhereSchema 
 });
+
+
+export const GetParentInfoArgsSchema = z.object({
+    id: z.string()
+});
+
+export const GetChildInfoArgsSchema = z.object({
+    id: z.string()
+});
+
+export const GetBudgetInfoArgsSchema = z.object({
+    id: z.string()
+});
+
+export const SumBudgetTransactionsSchema = z.object({
+    budgetId: z.string()
+});
