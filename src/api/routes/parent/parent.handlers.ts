@@ -1,10 +1,10 @@
 import { ChildrenBudget } from '@idangib/childrenbudget/dist/src/interface/app.interface';
-import { commonRead } from './common.handlers';
 import { ReadParentsResult } from '@idangib/childrenbudget/dist/src/interface/database.interface';
 import { Request, Response } from 'express';
 import { Logger } from '@/lib/logger';
 import { CreateParentSchema, DeleteParentSchema, UpdateParentSchema } from '@/interface/api.schemas';
 import { isEmpty } from 'lodash';
+import { commonRead } from '@/api/api.common';
 
 export const parentHandlers = (childrenBudget: ChildrenBudget) => {
     const readParnets = commonRead<ReadParentsResult>(childrenBudget.readParents, ['id']);

@@ -1,20 +1,20 @@
 import { ChildrenBudget } from '@idangib/childrenbudget/dist/src/interface/app.interface';
-import { commonRead } from './common.handlers';
-import { ReadChildrenResult } from '@idangib/childrenbudget/dist/src/interface/database.interface';
-import { CreateChildSchema, DeleteChildSchema, UpdateChildSchema } from '@/interface/api.schemas';
+import { ReadTransactionsResult } from '@idangib/childrenbudget/dist/src/interface/database.interface';
+import { CreateTransactionSchema, UpdateTransactionSchema, DeleteTransactionSchema } from '@/interface/api.schemas';
 import { isEmpty } from 'lodash';
 import { Request, Response } from 'express';
 import { Logger } from '@/lib/logger';
+import { commonRead } from '@/api/api.common';
 
-export const childHandlers = (childrenBudget: ChildrenBudget) => {
-    const readChildren = commonRead<ReadChildrenResult>(childrenBudget.readChildren, ['id', 'parentId']);
-    const createChild = async (req: Request, res: Response) => {
+export const transactionHandlers = (childrenBudget: ChildrenBudget) => {
+    const readTransactions = commonRead<ReadTransactionsResult>(childrenBudget.readTransactions, ['id', 'budgetId']);
+    const createTransaction = async (req: Request, res: Response) => {
         try {
-            const { success, data } = CreateChildSchema.safeParse(req.body);
+            const { success, data } = CreateTransactionSchema.safeParse(req.body);
             if (!success || isEmpty(data)) {
                 res.status(200).json({ err: 'invalid arguments', result: null });
             } else {
-                const result = await childrenBudget.createChild(data);
+                const result = await childrenBudget.createTransaction(data);
                 res.status(200).json({ err: null, result })
             }
         } catch(e) {
@@ -22,13 +22,13 @@ export const childHandlers = (childrenBudget: ChildrenBudget) => {
             res.status(500).json({ err: 'some error', result: null });
         }
     }
-    const updateChild = async (req: Request, res: Response) => {
+    const updateTransaction = async (req: Request, res: Response) => {
         try {
-            const { success, data: args } = UpdateChildSchema.safeParse(req.body);
+            const { success, data: args } = UpdateTransactionSchema.safeParse(req.body);
             if (!success || isEmpty(args)) {
                 res.status(200).json({ err: 'invalid arguments', result: null });
             } else {
-                const result = await childrenBudget.updateChild(args);
+                const result = await childrenBudget.updateTransaction(args);
                 res.status(200).json({ err: null, result })
             }
         } catch(e) {
@@ -36,13 +36,13 @@ export const childHandlers = (childrenBudget: ChildrenBudget) => {
             res.status(500).json({ err: 'some error', result: null });
         }
     }
-    const deleteChild = async (req: Request, res: Response) => {
+    const deleteTransaction = async (req: Request, res: Response) => {
         try {
-            const { success, data } = DeleteChildSchema.safeParse(req.params);
+            const { success, data } = DeleteTransactionSchema.safeParse(req.params);
             if (!success || isEmpty(data)) {
                 res.status(200).json({ err: 'invalid arguments', result: null });
             } else {
-                const result = await childrenBudget.deleteChild({ where: data });
+                const result = await childrenBudget.deleteTransaction({ where: data });
                 res.status(200).json({ err: null, result })
             }
         } catch(e) {
@@ -51,9 +51,9 @@ export const childHandlers = (childrenBudget: ChildrenBudget) => {
         }
     }
     return { 
-        readChildren,
-        createChild,
-        updateChild,
-        deleteChild,
+        readTransactions, 
+        createTransaction, 
+        updateTransaction, 
+        deleteTransaction 
     };
 }

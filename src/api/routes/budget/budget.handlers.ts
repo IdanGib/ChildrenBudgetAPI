@@ -1,10 +1,10 @@
 import { ChildrenBudget } from '@idangib/childrenbudget/dist/src/interface/app.interface';
-import { commonRead } from './common.handlers';
 import { ReadBudgetsResult } from '@idangib/childrenbudget/dist/src/interface/database.interface';
 import { Logger } from '@/lib/logger';
 import { Request, Response } from 'express';
 import { CreateBudgetSchema, DeleteBudgetSchema, UpdateBudgetSchema } from '@/interface/api.schemas';
 import { isEmpty } from 'lodash';
+import { commonRead } from '@/api/api.common';
 
 export const budgetHandlers = (childrenBudget: ChildrenBudget) => {
     const readBudgets = commonRead<ReadBudgetsResult>(childrenBudget.readBudgets, ['id', 'childId']);
