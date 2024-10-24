@@ -12,9 +12,9 @@ export const defaults = {
     offset: 0,
     reateLimitConfig: {
         windowMs: Times.getMinuteInMilliseconds(1),
-        limit: 60,
+        limit: 30,
         standardHeaders: true,
         legacyHeaders: false,
-        skipSuccessfulRequests: true,
+        skipSuccessfulRequests: false,
     } as Partial<RateLimitOptions>
 };

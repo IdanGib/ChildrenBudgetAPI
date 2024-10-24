@@ -16,5 +16,6 @@ export const middleware = async (app: Express) => {
    app.use(morgan('tiny'));
    app.use(compression());
    app.use(rateLimit(reateLimitConfig));
-   app.set("trust proxy", true);
+   app.set("trust proxy", 10);
+   app.set('view engine', 'pug');
 }
