@@ -1,12 +1,12 @@
 import { ActionsDeps } from '@/interface/api.interface';
 import { Router } from 'express';
-import { parentRouter } from '@/api/actions/routers/parent.router';
-import { budgetRouter } from '@/api/actions/routers/budget.router';
-import { childRouter } from '@/api/actions/routers/child.router';
-import { transactionRouter } from '@/api/actions/routers/transaction.router';
+import { parentRouter } from '@/api/routes/routers/parent.router';
+import { budgetRouter } from '@/api/routes/routers/budget.router';
+import { childRouter } from '@/api/routes/routers/child.router';
+import { transactionRouter } from '@/api/routes/routers/transaction.router';
 import { infoRouter } from './routers/info.router';
 
-export const actions = async ({ app, childrenBudget }: ActionsDeps) => {
+export const apiRoutes = async ({ app, childrenBudget }: ActionsDeps) => {
     const router = Router({});
 
     router.use('/parents', parentRouter(childrenBudget));

@@ -16,6 +16,7 @@
   "author": "idangibly",
   "license": "ISC",
   "dependencies": {
+    "@auth/express": "^0.8.2",
     "@idangib/childrenbudget": "1.0.17",
     "body-parser": "^1.20.3",
     "compression": "^1.7.4",

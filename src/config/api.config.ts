@@ -1,12 +1,10 @@
 import { ApiConfig } from "@/interface/api.interface";
+import { envConfig } from "@/lib/env.config";
 import { Times } from "@/utils/utils.constants";
-import { config } from "dotenv";
 import { Options as RateLimitOptions } from "express-rate-limit";
 
-config();
-
 export const apiConfig: ApiConfig = {
-    port: Number(process.env.API_PORT)
+    port: envConfig.API_PORT
 };
 
 export const defaults = {

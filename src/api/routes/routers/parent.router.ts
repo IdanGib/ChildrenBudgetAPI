@@ -1,6 +1,6 @@
 import { ChildrenBudget } from '@idangib/childrenbudget/dist/src/interface/app.interface';
 import { Router } from 'express';
-import { parentHandlers } from '@/api/actions/handlers/parent.handlers';
+import { parentHandlers } from '@/api/routes/handlers/parent.handlers';
 
 export const parentRouter = (childrenBudget: ChildrenBudget) => {
     const { readParnets, createParnet, updateParent, deleteParent } = parentHandlers(childrenBudget);
