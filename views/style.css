@@ -1,0 +1,12 @@
+:root {
+    --border-radius: 4px;
+}
+html, body, head {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.title {
+    text-align: center;
+}
+.google {
+    display: flex;
+}
