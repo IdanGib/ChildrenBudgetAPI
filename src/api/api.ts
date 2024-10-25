@@ -4,20 +4,18 @@ import { apiRoutes } from '@/api/routes/api.routes';
 import { ApiDeps } from '@/interface/api.interface';
 import { ChildrenBudget } from '@idangib/childrenbudget/dist/src/interface/app.interface';
 import { Logger } from '@/lib/logger';
+import { DbModels } from '@/database/database.interface';
 
 export class Api {
     private readonly app: Express;
-    private readonly childrenBudget: ChildrenBudget;
-
-    constructor(protected readonly deps: ApiDeps) {
+    constructor(private readonly deps: ApiDeps) {
         this.app = express();
-        this.childrenBudget = deps.childrenBudget;
     }
 
     async run() {
-        const { childrenBudget, app, deps: { config: { port } } } = this;
+        const { app, deps: { config: { port }, childrenBudget, db } } = this;
         await middleware(app);
-        await apiRoutes({ app, childrenBudget });
+        await apiRoutes({ app, childrenBudget, db });
         app.listen(port, () => Logger.log(`[${new Date().toISOString()}] API running on port: ${port}`));
     }
 }
