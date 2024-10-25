@@ -1,4 +1,4 @@
-import { json } from 'body-parser';
+import { json, urlencoded } from 'body-parser';
 import compression from 'compression';
 import { Express } from 'express';
 import cookie from 'cookie-parser';
@@ -6,16 +6,24 @@ import cors from 'cors';
 import morgan from 'morgan';
 import { rateLimit } from 'express-rate-limit';
 import { defaults } from '@/config/api.config';
+import session from 'express-session';
+import { envConfig } from '@/lib/env.config';
+import passport from 'passport';
 
 const { reateLimitConfig } = defaults;
+const { AUTH_SECRET } = envConfig;
 
 export const middleware = async (app: Express) => {
    app.use(json());
+   app.use(urlencoded({ extended: true }));
    app.use(cookie());
    app.use(cors());
    app.use(morgan('tiny'));
    app.use(compression());
    app.use(rateLimit(reateLimitConfig));
+   app.use(session({ secret: AUTH_SECRET, resave: true, saveUninitialized: true }));
+   app.use(passport.initialize());
+   app.use(passport.session());
    app.set("trust proxy", 10);
    app.set('view engine', 'pug');
 }
