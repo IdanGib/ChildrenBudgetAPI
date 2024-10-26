@@ -10,7 +10,7 @@ export const authRouter = ({
     
     router.get('/google/login', authenticate);
     router.get('/google/callback', authenticate, callback);
-    router.get('/google/logout', logout);
+    router.post('/google/logout', logout);
 
     return router;
 }
