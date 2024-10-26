@@ -7,17 +7,17 @@ import { transactionRouter } from '@/api/routes/transaction/transaction.router';
 import { infoRouter } from './info/info.router';
 import { authRouter } from './auth/auth.routes';
 import { viewsRouter } from './views/views.router';
-import { auth } from '../auth/auth';
+import { authentication } from '../auth/authentication';
 
 export const apiRoutes = async ({ app, childrenBudget, db }: ActionsDeps) => {
     const router = Router({});
-    const _auth = auth({ db });
+    const auth = authentication({ db });
     router.use('/parents', parentRouter(childrenBudget));
     router.use('/children', childRouter(childrenBudget));
     router.use('/transacitons', transactionRouter(childrenBudget));
     router.use('/budgets', budgetRouter(childrenBudget));
     router.use('/info', infoRouter(childrenBudget));
-    router.use('/auth', authRouter({ auth: _auth }));
+    router.use('/auth', authRouter({ auth }));
     router.use('/views', viewsRouter());
     app.use('/v1', router);
 }

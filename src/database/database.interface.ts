@@ -1,11 +1,20 @@
-import sequelize, { Model, ModelCtor, ModelDefined, ModelStatic } from "sequelize";
-
+import { Profile } from 'passport-google-oauth20';
 export interface DbUser {
     id: string;
-    profile: any;
+    profile: Profile;
     accessToken: string;
 }
 
-export interface DbModels {
-    user: ModelStatic<Model<DbUser, Omit<DbUser, 'id'>>>;
-}
+export type GetOrCreateUser = (args: { profileId: string; user: Omit<DbUser, 'id'> }) => Promise<DbUser | undefined>;
+export type GetUser = (args: { id: string; }) => Promise<DbUser | undefined>;
+
+export interface IDatabase {
+    getOrCreateUser: GetOrCreateUser;
+    getUser: GetUser;
+} 
+
+export type GetOrCreateUserArgs = Parameters<GetOrCreateUser>[0];
+export type GetOrCreateUserResult = Awaited<ReturnType<GetOrCreateUser>>;
+
+export type GetUserArgs = Parameters<GetUser>[0];
+export type GetUserResult = Awaited<ReturnType<GetUser>>;

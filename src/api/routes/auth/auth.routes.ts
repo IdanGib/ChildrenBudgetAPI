@@ -1,11 +1,16 @@
 import { Router } from 'express';
 import { authHandlers } from '@/api/routes/auth/auth.handlers';
-import { auth } from '@/api/auth/auth';
+import { authentication } from '@/api/auth/authentication';
 
-export const authRouter = ({ auth: { authenticate, authenticator } }: { auth: ReturnType<typeof auth> }) => {
+export const authRouter = ({ 
+    auth: { authenticate, authenticator } 
+}: { auth: ReturnType<typeof authentication> }) => {
     const router = Router();
-    const { getAuth  } = authHandlers();
-    router.get('/google/redirect', authenticate, getAuth);
-    router.get('/google', authenticator);
+    const { callback, logout  } = authHandlers();
+    
+    router.get('/google/login', authenticator);
+    router.get('/google/callback', authenticate, callback);
+    router.get('/google/logout', logout);
+
     return router;
 }

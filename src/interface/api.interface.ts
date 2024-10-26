@@ -1,4 +1,4 @@
-import { DbModels } from "@/database/database.interface";
+import { IDatabase } from "@/database/database.interface";
 import { BudgetSchema, ChildSchema, ParentSchema, ReadQuertArgsSchema, ReadWhereSchema, TransactionSchema, UpdateParentSchema, CreateParentSchema, DeleteParentSchema, UpdateChildSchema, CreateChildSchema, DeleteChildSchema, UpdateBudgetSchema, CreateBudgetSchema, DeleteBudgetSchema, UpdateTransactionSchema, CreateTransactionSchema, DeleteTransactionSchema } from "@/interface/api.schemas";
 import { ChildrenBudget } from "@idangib/childrenbudget/dist/src/interface/app.interface";
 import { Express } from 'express';
@@ -11,7 +11,7 @@ export interface ApiConfig {
 export interface ApiDeps {
     config: ApiConfig;
     childrenBudget: ChildrenBudget;
-    db: DbModels;
+    db: IDatabase;
 }
 
 export type ApiParent = z.infer<typeof ParentSchema>;
@@ -43,5 +43,5 @@ export type ReadQuertArgs = z.infer<typeof ReadQuertArgsSchema>;
 export interface ActionsDeps {
     app: Express;
     childrenBudget: ChildrenBudget;
-    db: DbModels;
+    db: IDatabase;
 }

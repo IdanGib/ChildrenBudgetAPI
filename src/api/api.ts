@@ -2,9 +2,7 @@ import express, { Express } from 'express';
 import { middleware } from '@/api/api.middleware';
 import { apiRoutes } from '@/api/routes/api.routes';
 import { ApiDeps } from '@/interface/api.interface';
-import { ChildrenBudget } from '@idangib/childrenbudget/dist/src/interface/app.interface';
 import { Logger } from '@/lib/logger';
-import { DbModels } from '@/database/database.interface';
 
 export class Api {
     private readonly app: Express;

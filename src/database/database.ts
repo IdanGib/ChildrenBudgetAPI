@@ -1,8 +1,9 @@
 import { envConfig } from "@/lib/env.config"
 import { Sequelize } from "sequelize";
 import { initModels } from "./database.models";
+import { DbUser, GetOrCreateUserArgs, GetOrCreateUserResult, GetUserArgs, GetUserResult, IDatabase } from "./database.interface";
 
-export const database = async () => {
+export const database = async (): Promise<IDatabase> => {
     const {
         DB_POSTGRESQL_DATABASE: database,
         DB_POSTGRESQL_HOST: host,
@@ -19,8 +20,20 @@ export const database = async () => {
         dialect: 'postgres',
         logging: false,
     });
-    const models = initModels(sequelize);
+    const { user: userModel } = initModels(sequelize);
     await sequelize.authenticate();
     await sequelize.sync({ alter: true });
-    return models;
+    return {
+        getOrCreateUser: async ({ profileId, user }: GetOrCreateUserArgs): Promise<GetOrCreateUserResult> => {
+            const [result] = await userModel.findOrCreate({ 
+                where: { 'profile.id': profileId }, 
+                defaults: user 
+            });
+            return result?.get();
+        },
+        getUser: async ({ id }: GetUserArgs): Promise<GetUserResult> => {
+            const user = await userModel.findOne({ where: { id } });
+            return user?.get();
+        }
+    };
 }

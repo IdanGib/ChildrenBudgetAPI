@@ -6,7 +6,14 @@ export const viewsHandlers = () => {
             title: 'Children Budget',
         });
     }
+    const loginFails = async (req: Request, res: Response) => {
+        res.render('login-fails', { 
+            title: 'Error',
+            message: 'Fail to login'
+        });
+    }
     return {
-        index
+        index,
+        loginFails
     };
 }
