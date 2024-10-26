@@ -14,7 +14,7 @@ export const apiRoutes = async ({ app, childrenBudget, db }: ActionsDeps) => {
     const auth = authentication({ db });
     app.use('/auth', authRouter({ auth }));
 
-    const router = Router({});
+    const router = Router();
     router.use('/parents', parentRouter(childrenBudget));
     router.use('/children', childRouter(childrenBudget));
     router.use('/transacitons', transactionRouter(childrenBudget));
