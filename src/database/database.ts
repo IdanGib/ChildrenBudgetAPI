@@ -1,7 +1,7 @@
 import { envConfig } from "@/lib/env.config"
 import { Sequelize } from "sequelize";
-import { initModels } from "./database.models";
-import { DbUser, GetOrCreateUserArgs, GetOrCreateUserResult, GetUserArgs, GetUserResult, IDatabase } from "./database.interface";
+import { initModels } from "@/database/database.models";
+import { GetOrCreateUserArgs, GetOrCreateUserResult, GetUserArgs, GetUserResult, IDatabase } from "@/database/database.interface";
 
 export const database = async (): Promise<IDatabase> => {
     const {

@@ -1,6 +1,6 @@
 import { ChildrenBudget } from '@idangib/childrenbudget/dist/src/interface/app.interface';
 import { Router } from 'express';
-import { budgetHandlers } from '@/api/routes/budget/budget.handlers';
+import { budgetHandlers } from '@/api/routes/v1/budget/budget.handlers';
 
 
 export const budgetRouter = (childrenBudget: ChildrenBudget) => {

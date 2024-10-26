@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { viewsHandlers } from "./views.handlers";
+import { viewsHandlers } from "@/api/routes/views/views.handlers";
 
 export const viewsRouter = () => {
     const router = Router();

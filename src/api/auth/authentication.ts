@@ -41,8 +41,7 @@ export const authentication = ({ db }: { db: IDatabase }) => {
     
     return {
         authenticate: passport.authenticate('google', { 
-            scope: ['profile', 'email'], 
-            failureRedirect: 'v1/views/login-fails' 
+            scope: ['profile', 'email']
         }),
         authGuard: (req: Request, res: Response, next: NextFunction) => {
             if (isEmpty(req.user)) {

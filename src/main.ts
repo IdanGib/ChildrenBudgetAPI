@@ -1,9 +1,9 @@
 import { Api } from '@/api/api';
-import { apiConfig } from './config/api.config';
+import { apiConfig } from '@/config/api.config';
 import { childrenBudgetApplication } from '@idangib/childrenbudget';
-import { dbConfig } from './config/db.config';
-import { Logger } from './lib/logger';
-import { database } from './database/database';
+import { dbConfig } from '@/config/db.config';
+import { Logger } from '@/lib/logger';
+import { database } from '@/database/database';
 
 const main = async () => {
     try {

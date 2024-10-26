@@ -1,6 +1,6 @@
 import { ChildrenBudget } from '@idangib/childrenbudget/dist/src/interface/app.interface';
 import { Router } from 'express';
-import { infoHandlers } from '@/api/routes/info/info.handlers';
+import { infoHandlers } from '@/api/routes/v1/info/info.handlers';
 
 export const infoRouter = (childrenBudget: ChildrenBudget) => {
     const { getBudgetInfo, getParentInfo, getChildInfo, sumBudgetTransactions } = infoHandlers(childrenBudget);
