@@ -10,14 +10,16 @@ import { viewsRouter } from './views/views.router';
 import { authentication } from '../auth/authentication';
 
 export const apiRoutes = async ({ app, childrenBudget, db }: ActionsDeps) => {
-    const router = Router({});
+
     const auth = authentication({ db });
+    app.use('/auth', authRouter({ auth }));
+
+    const router = Router({});
     router.use('/parents', parentRouter(childrenBudget));
     router.use('/children', childRouter(childrenBudget));
     router.use('/transacitons', transactionRouter(childrenBudget));
     router.use('/budgets', budgetRouter(childrenBudget));
     router.use('/info', infoRouter(childrenBudget));
-    router.use('/auth', authRouter({ auth }));
     router.use('/views', viewsRouter());
-    app.use('/v1', router);
+    app.use('/v1', auth.authGuard, router);
 }

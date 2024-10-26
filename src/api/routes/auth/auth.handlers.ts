@@ -9,13 +9,7 @@ export const authHandlers = () => {
             if (err) { 
                 return next(err); 
             }
-            req.session.destroy(err => {
-                if (err) {
-                    return next(err);
-                }
-                res.clearCookie("connect.sid");
-                res.redirect('/v1/views');
-            });
+            res.json({ message: 'logged out' });
         });
     }
     return {
