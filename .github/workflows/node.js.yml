@@ -27,8 +27,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
       env:
-        PACKAGES_READ: ${{ secrets.PACKAGES_READ }}
-    - run: PACKAGES_READ=$PACKAGES_READ ./scripts/create_npmrc_for_deployment.sh
+        NPM_AUTH_TOKEN: ${{ secrets.PACKAGES_READ }}
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
