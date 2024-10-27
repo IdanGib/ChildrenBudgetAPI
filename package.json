@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "api for children budget app",
   "main": "dist/main.js",
-  "publishConfig": {
-    "@idangib:registry": "https://npm.pkg.github.com"
-  },
   "repository": {
     "url": "https://github.com/IdanGib/ChildrenBudgetAPI.git"
   },
