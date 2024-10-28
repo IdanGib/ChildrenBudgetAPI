@@ -10,7 +10,7 @@
     "test": "exit 0",
     "build": "rm -rf dist && npx tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
     "prestart": "npm run build",
-    "start": "node ./dist/main.js",
+    "start": "npm run load-env -- ./dist/main.js",
     "children": "npm i --save-exact @idangib/childrenbudget@latest"
   },
   "author": "idangibly",

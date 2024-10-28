@@ -1,7 +1,4 @@
 import { IEnvConfig } from "@/interface/env.interface";
-import { config } from "dotenv";
-
-config();
 const env = process.env;
 class EnvConfig implements IEnvConfig {
     public readonly NPMRC_GITHUB_PACKAGES_AUTH_LINE: string = env.NPMRC_GITHUB_PACKAGES_AUTH_LINE ?? '';
