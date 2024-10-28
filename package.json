@@ -17,7 +17,7 @@
   "author": "idangibly",
   "license": "ISC",
   "dependencies": {
-    "@idangib/childrenbudget": "1.0.24",
+    "@idangib/childrenbudget": "1.0.25",
     "body-parser": "^1.20.3",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.7",
