@@ -9,9 +9,10 @@
   "scripts": {
     "test": "exit 0",
     "build": "rm -rf dist && npx tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
-    "prestart": "npm run build",
     "start": "node ./dist/main.js",
     "local": "node -r dotenv/config ./dist/main.js",
+    "local-test-server": "node -r dotenv/config ./dist/test.js",
+    "test-server": "node ./dist/test.js",
     "children": "npm i --save-exact @idangib/childrenbudget@latest"
   },
   "author": "idangibly",
