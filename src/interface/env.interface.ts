@@ -1,5 +1,4 @@
 export interface IEnvConfig {
-    NPMRC_GITHUB_PACKAGES_AUTH_LINE: string;
     DB_POSTGRESQL_HOST: string;
     DB_POSTGRESQL_PASSWORD: string;
     DB_POSTGRESQL_PORT: number;

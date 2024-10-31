@@ -15,7 +15,8 @@
     "test-server": "node ./dist/test.js",
     "children": "npm i --save-exact @idangib/childrenbudget@latest",
     "docker": "docker compose up --build",
-    "secrets": "node ./scripts/secrets.js"
+    "env": "node ./scripts/env.js",
+    "local-docker": "npm run env && npm run docker"
   },
   "author": "idangibly",
   "license": "ISC",
