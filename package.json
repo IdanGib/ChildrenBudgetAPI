@@ -10,10 +10,12 @@
     "test": "exit 0",
     "build": "rm -rf dist && npx tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
     "start": "node ./dist/main.js",
-    "local": "node -r dotenv/config ./dist/main.js",
-    "local-test-server": "node -r dotenv/config ./dist/test.js",
+    "local": "npm run build && node -r dotenv/config ./dist/main.js",
+    "local-test-server": "npm run build && node -r dotenv/config ./dist/test.js",
     "test-server": "node ./dist/test.js",
-    "children": "npm i --save-exact @idangib/childrenbudget@latest"
+    "children": "npm i --save-exact @idangib/childrenbudget@latest",
+    "docker": "docker compose up --build",
+    "secrets": "node ./scripts/secrets.js"
   },
   "author": "idangibly",
   "license": "ISC",
