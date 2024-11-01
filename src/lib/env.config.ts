@@ -14,7 +14,6 @@ const loadSecret = (path: string = ''): string => {
 
 class EnvConfig implements IEnvConfig {
     // secrets
-    public readonly DB_POSTGRESQL_HOST: string = loadSecret(env.DB_POSTGRESQL_HOST_FILE);
     public readonly DB_POSTGRESQL_PASSWORD: string = loadSecret(env.DB_POSTGRESQL_PASSWORD_FILE);
     public readonly DB_POSTGRESQL_USERNAME: string = loadSecret(env.DB_POSTGRESQL_USERNAME_FILE);
     public readonly DB_POSTGRESQL_DATABASE: string = loadSecret(env.DB_POSTGRESQL_DATABASE_FILE);
@@ -23,6 +22,7 @@ class EnvConfig implements IEnvConfig {
     public readonly AUTH_GOOGLE_SECRET: string = loadSecret(env.AUTH_GOOGLE_SECRET_FILE);
     
     // envs
+    public readonly DB_POSTGRESQL_HOST: string = env.DB_POSTGRESQL_HOST ?? '';
     public readonly DB_POSTGRESQL_PORT: number = Number(env.DB_POSTGRESQL_PORT);
     public readonly API_PORT: number = Number(env.API_PORT)
     public readonly AUTH_GOOGLE_REDIRECT: string = env.AUTH_GOOGLE_REDIRECT ?? '';

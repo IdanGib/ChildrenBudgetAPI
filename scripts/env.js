@@ -8,7 +8,6 @@ const envSecretsPaths = '.env';
 config({ path: envFile });
 
 const secretsFields = [
-    'DB_POSTGRESQL_HOST',
     'DB_POSTGRESQL_PASSWORD',
     'DB_POSTGRESQL_USERNAME',
     'DB_POSTGRESQL_DATABASE',
@@ -33,6 +32,7 @@ if (existsSync(secretsDir)) {
 mkdirSync(secretsDir);
 const envContent = [
     'API_PORT=3000',
+    'DB_POSTGRESQL_HOST=localhost',
     'DB_POSTGRESQL_PORT=5432',
     'AUTH_GOOGLE_REDIRECT="http://localhost:3000/auth/google/callback"'
 ];
