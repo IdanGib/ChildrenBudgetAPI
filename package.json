@@ -16,7 +16,8 @@
     "children": "npm i --save-exact @idangib/childrenbudget@latest",
     "docker": "docker compose up --build",
     "env": "node ./scripts/env.js",
-    "local-docker": "npm run env && npm run docker"
+    "local-docker": "npm run env && npm run docker",
+    "secrets": "node ./scripts/secrets.js"
   },
   "author": "idangibly",
   "license": "ISC",
