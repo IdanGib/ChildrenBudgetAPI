@@ -12,7 +12,7 @@ export class Api {
 
     async run() {
         const { app, deps: { config: { port }, childrenBudget, db } } = this;
-        await middleware(app);
+        await middleware(app, db.sequelize);
         await apiRoutes({ app, childrenBudget, db });
         app.listen(port, () => Logger.log(`[${new Date().toISOString()}] API running on port: ${port}`));
     }

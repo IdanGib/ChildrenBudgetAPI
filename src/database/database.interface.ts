@@ -1,4 +1,5 @@
 import { Profile } from 'passport-google-oauth20';
+import { Sequelize } from 'sequelize';
 export interface DbUser {
     id: string;
     profile: Profile;
@@ -11,6 +12,7 @@ export type GetUser = (args: { id: string; }) => Promise<DbUser | undefined>;
 export interface IDatabase {
     getOrCreateUser: GetOrCreateUser;
     getUser: GetUser;
+    sequelize: Sequelize;
 } 
 
 export type GetOrCreateUserArgs = Parameters<GetOrCreateUser>[0];

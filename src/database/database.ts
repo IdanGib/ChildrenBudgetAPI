@@ -34,6 +34,7 @@ export const database = async (): Promise<IDatabase> => {
         getUser: async ({ id }: GetUserArgs): Promise<GetUserResult> => {
             const user = await userModel.findOne({ where: { id } });
             return user?.get();
-        }
+        },
+        sequelize,
     };
 }

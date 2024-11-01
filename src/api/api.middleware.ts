@@ -7,13 +7,12 @@ import morgan from 'morgan';
 import { rateLimit } from 'express-rate-limit';
 import { defaults } from '@/config/api.config';
 import session from 'express-session';
-import { envConfig } from '@/lib/env.config';
 import passport from 'passport';
+import { Sequelize } from 'sequelize';
 
-const { reateLimitConfig } = defaults;
-const { AUTH_SECRET } = envConfig;
+const { reateLimitConfig, sessionConfig } = defaults;
 
-export const middleware = async (app: Express) => {
+export const middleware = async (app: Express, db: Sequelize) => {
    app.use(json());
    app.use(urlencoded({ extended: true }));
    app.use(cookie());
@@ -21,7 +20,11 @@ export const middleware = async (app: Express) => {
    app.use(morgan('tiny'));
    app.use(compression());
    app.use(rateLimit(reateLimitConfig));
-   app.use(session({ secret: AUTH_SECRET, resave: true, saveUninitialized: true }));
+
+   const _sessionConfig = sessionConfig(db);
+   app.use(session(_sessionConfig));
+   _sessionConfig.store.sync();
+   
    app.use(passport.initialize());
    app.use(passport.session());
    app.set("trust proxy", 10);
