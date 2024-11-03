@@ -32,9 +32,10 @@ if (existsSync(secretsDir)) {
 mkdirSync(secretsDir);
 const envContent = [
     'API_PORT=3000',
-    'DB_POSTGRESQL_HOST=localhost',
+    'DB_POSTGRESQL_HOST="localhost"',
     'DB_POSTGRESQL_PORT=5432',
-    'AUTH_GOOGLE_REDIRECT="http://localhost:3000/auth/google/callback"'
+    'AUTH_GOOGLE_REDIRECT="http://localhost:3000/auth/google/callback"',
+    'CORS_ORIGIN_WEB_APP="http://localhost:4200"'
 ];
 for (const field of secretsFields) {
     const filename = `${field.toLowerCase()}.txt`;

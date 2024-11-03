@@ -10,13 +10,13 @@ import session from 'express-session';
 import passport from 'passport';
 import { Sequelize } from 'sequelize';
 
-const { reateLimitConfig, sessionConfig } = defaults;
+const { reateLimitConfig, sessionConfig, origins } = defaults;
 
 export const middleware = async (app: Express, db: Sequelize) => {
    app.use(json());
    app.use(urlencoded({ extended: true }));
    app.use(cookie());
-   app.use(cors());
+   app.use(cors({ origin: origins }));
    app.use(morgan('tiny'));
    app.use(compression());
    app.use(rateLimit(reateLimitConfig));

@@ -5,8 +5,9 @@ import { Options as RateLimitOptions } from "express-rate-limit";
 import session from "express-session";
 import { Sequelize } from "sequelize";
 import sessionStore from 'connect-session-sequelize';
+import { compact } from "lodash";
 
-const { AUTH_SECRET } = envConfig;
+const { AUTH_SECRET, CORS_ORIGIN_WEB_APP } = envConfig;
 
 export const apiConfig: ApiConfig = {
     port: envConfig.API_PORT
@@ -15,6 +16,7 @@ export const apiConfig: ApiConfig = {
 export const defaults = {
     limit: 10,
     offset: 0,
+    origins: compact([CORS_ORIGIN_WEB_APP]),
     sessionConfig: (db: Sequelize) => {
         const SequelizeStore = sessionStore(session.Store);
         const store = new SequelizeStore({ db });

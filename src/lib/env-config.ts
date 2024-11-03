@@ -26,6 +26,7 @@ class EnvConfig implements IEnvConfig {
     public readonly DB_POSTGRESQL_PORT: number = Number(env.DB_POSTGRESQL_PORT);
     public readonly API_PORT: number = Number(env.API_PORT)
     public readonly AUTH_GOOGLE_REDIRECT: string = env.AUTH_GOOGLE_REDIRECT ?? '';
+    public readonly CORS_ORIGIN_WEB_APP: string = env.CORS_ORIGIN_WEB_APP ?? '';
 
 }
 

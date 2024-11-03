@@ -9,6 +9,7 @@ export interface IEnvConfig {
     AUTH_GOOGLE_REDIRECT: string;
     AUTH_GOOGLE_ID: string;
     AUTH_GOOGLE_SECRET: string;
+    CORS_ORIGIN_WEB_APP: string;
 }
 
 export type EnvFields = keyof IEnvConfig;
