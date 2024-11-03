@@ -1,4 +1,4 @@
-import { envConfig } from "@/lib/env.config"
+import { envConfig } from "@/lib/env-config"
 import { Sequelize } from "sequelize";
 import { initModels } from "@/database/database.models";
 import { GetOrCreateUserArgs, GetOrCreateUserResult, GetUserArgs, GetUserResult, IDatabase } from "@/database/database.interface";

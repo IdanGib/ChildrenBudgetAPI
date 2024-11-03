@@ -1,5 +1,5 @@
 import { IDatabase } from '@/database/database.interface';
-import { envConfig } from '@/lib/env.config';
+import { envConfig } from '@/lib/env-config';
 import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 const { AUTH_GOOGLE_ID, AUTH_GOOGLE_REDIRECT, AUTH_GOOGLE_SECRET } = envConfig;

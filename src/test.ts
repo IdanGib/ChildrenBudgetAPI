@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { envConfig } from './lib/env.config';
+import { envConfig } from './lib/env-config';
 import { EnvFields } from './interface/env.interface';
 const test = async () => {
     const app = express();

@@ -1,4 +1,4 @@
-import { envConfig } from "@/lib/env.config";
+import { envConfig } from "@/lib/env-config";
 import { PostgreSqlConfig } from "@idangib/childrenbudget/dist/src/interface/database.interface";
 const {
     DB_POSTGRESQL_USERNAME,

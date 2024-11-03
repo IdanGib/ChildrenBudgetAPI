@@ -1,5 +1,5 @@
 import { ApiConfig } from "@/interface/api.interface";
-import { envConfig } from "@/lib/env.config";
+import { envConfig } from "@/lib/env-config";
 import { Times } from "@/utils/utils.constants";
 import { Options as RateLimitOptions } from "express-rate-limit";
 import session from "express-session";
